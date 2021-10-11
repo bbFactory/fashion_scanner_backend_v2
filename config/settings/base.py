@@ -69,6 +69,7 @@ LOCAL_APPS = [
     "server.cloth.apps.ClothConfig",
     "server.member.apps.MemberConfig",
     "server.shoppingmall.apps.ShoppingmallConfig",
+    "server.common.apps.CommonConfig",
 ]
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
 
