@@ -2,6 +2,6 @@
 # ------------------------------------------------------------------------------
 POSTGRES_HOST=postgres
 POSTGRES_PORT=5432
-POSTGRES_DB=fasion_scanner
+POSTGRES_DB=fashion_scanner
 POSTGRES_USER=postgres
 POSTGRES_PASSWORD=postgres
