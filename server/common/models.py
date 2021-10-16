@@ -15,3 +15,8 @@ class Color(BaseModel):
         verbose_name = "색상"
         verbose_name_plural = "색상"
         ordering = ["id"]
+
+
+class Brand(BaseModel):
+    name = models.CharField(max_length=64, blank=True, null=True)
+    
