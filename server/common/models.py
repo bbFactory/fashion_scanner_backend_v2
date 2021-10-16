@@ -1,7 +1,10 @@
 from django.db import models
+from server.base.models import BaseModel
 
 # Create your models here.
-class Color(models.Model):
+
+
+class Color(BaseModel):
     hex_code = models.CharField(max_length=6, unique=True, verbose_name="색상 코드")
 
     def __str__(self):
