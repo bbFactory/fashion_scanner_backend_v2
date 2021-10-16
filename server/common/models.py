@@ -25,6 +25,6 @@ class Brand(BaseModel):
 
     class Meta:
         db_table = "common_brand"
-        verbose_name = "색상"
-        verbose_name_plural = "색상"
+        verbose_name = "브랜드"
+        verbose_name_plural = "브랜드"
         ordering = ["id"]
