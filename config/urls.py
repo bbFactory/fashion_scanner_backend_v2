@@ -26,7 +26,7 @@ urlpatterns = [
 urlpatterns += [
     # API base url
     # path("api/users/login", obtain_auth_token),
-    # path("api/v1/", include("config.api_router")),
+    path("api/v1/", include("config.api_router")),
     # Health checks:
     path("health/", include(health_urls)),  # noqa: DJ05
     # DRF login
