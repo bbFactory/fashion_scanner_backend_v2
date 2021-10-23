@@ -14,22 +14,13 @@ class Clothes(BaseModel):
         verbose_name="의류 이미지",
     )
     member = models.ForeignKey(
-        "member.Members",
-        null=True,
-        verbose_name="멤버",
-        on_delete=models.CASCADE
+        "member.Members", null=True, verbose_name="멤버", on_delete=models.CASCADE
     )
     color = models.ForeignKey(
-        "common.Color",
-        null=True,
-        verbose_name="의류 색상",
-        on_delete=models.CASCADE
+        "common.Color", null=True, verbose_name="의류 색상", on_delete=models.CASCADE
     )
     category = models.ForeignKey(
-        "cloth.Category",
-        null=True,
-        verbose_name="의류 카테고리",
-        on_delete=models.CASCADE
+        "cloth.Category", null=True, verbose_name="의류 카테고리", on_delete=models.CASCADE
     )
     attributes = models.ManyToManyField(
         "cloth.Attribute",

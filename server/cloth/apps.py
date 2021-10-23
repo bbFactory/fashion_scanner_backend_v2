@@ -2,5 +2,6 @@ from django.apps import AppConfig
 
 
 class ClothConfig(AppConfig):
-    default_auto_field = 'django.db.models.BigAutoField'
-    name = 'cloth'
+    name = "server.cloth"
+    default_auto_field = "django.db.models.BigAutoField"
+    verbose_name = "옷 데이터"

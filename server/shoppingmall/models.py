@@ -14,10 +14,7 @@ class ShoppingMall(BaseModel):
         verbose_name="쇼핑몰 의류 이미지",
     )
     brand = models.ForeignKey(
-        "common.Brand",
-        null=True,
-        verbose_name="브랜드",
-        on_delete=models.CASCADE
+        "common.Brand", null=True, verbose_name="브랜드", on_delete=models.CASCADE
     )
     cloth = models.ManyToManyField(
         "cloth.Clothes",
@@ -34,4 +31,3 @@ class ShoppingMall(BaseModel):
         verbose_name = "쇼핑몰"
         verbose_name_plural = "쇼핑몰"
         ordering = ["id"]
-
