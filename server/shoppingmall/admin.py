@@ -1,5 +1,5 @@
 from django.contrib import admin
-from server.common.models import ShoppingMall
+from server.shoppingmall.models import ShoppingMall
 
 
 class ShoppingMallAdmin(admin.ModelAdmin):
