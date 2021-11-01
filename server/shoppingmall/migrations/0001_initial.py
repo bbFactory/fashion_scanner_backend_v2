@@ -2,7 +2,7 @@
 
 from django.db import migrations, models
 import django.db.models.deletion
-import shoppingmall.models
+import server.shoppingmall.models
 
 
 class Migration(migrations.Migration):
@@ -21,7 +21,7 @@ class Migration(migrations.Migration):
                 ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, unique=True, verbose_name='Primary ID')),
                 ('createdAt', models.DateTimeField(null=True)),
                 ('updatedAt', models.DateTimeField(null=True)),
-                ('image', models.ImageField(upload_to=shoppingmall.models.image_upload_to, verbose_name='쇼핑몰 의류 이미지')),
+                ('image', models.ImageField(upload_to=server.shoppingmall.models.image_upload_to, verbose_name='쇼핑몰 의류 이미지')),
                 ('url', models.TextField(verbose_name='웹 페이지 URL')),
                 ('price', models.IntegerField(default=0, verbose_name='가격')),
                 ('brand', models.ForeignKey(null=True, on_delete=django.db.models.deletion.CASCADE, to='common.Brand', verbose_name='브랜드')),
