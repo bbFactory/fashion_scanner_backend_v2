@@ -1,5 +1,6 @@
 from django.db import models
 from server.base.models import BaseModel
+import os
 
 
 def image_upload_to(instance, filename):
