@@ -10,11 +10,12 @@ class AttributeSerializer(serializers.ModelSerializer):
         fields = ["ko_name"]
 
 
-class ClothSerialzier(serializers.ModelSerializer):
+class ClothSerializer(serializers.ModelSerializer):
     color_name = serializers.SerializerMethodField("get_color_name")
-    category_name = serializers.SerializerMethodField("get_category_name")
-    attribute_list = serializers.SerializerMethodField("get_attribute_name")
-    # image_url = serializers.SerializerMethodField("get_image_url")
+    ko_category_name = serializers.SerializerMethodField("get_category_name")
+    en_category_name = serializers.SerializerMethodField("get_en_category_name")
+    attributes = serializers.SerializerMethodField("get_attribute_name")
+    en_attributes = serializers.SerializerMethodField("get_en_attribute_name")
 
     class Meta:
         model = Clothes
@@ -23,9 +24,12 @@ class ClothSerialzier(serializers.ModelSerializer):
             # "image_url",
             "color_name",
             # "category_id",
-            "category_name",
-            # "attributes",
-            "attribute_list",
+            "ko_category_name",
+            "en_category_name",
+            "attributes",
+            "en_attributes",
+            # "ko_attribute",
+            # "en_attribute_list",
         ]
 
     def get_color_name(self, obj):
@@ -36,3 +40,9 @@ class ClothSerialzier(serializers.ModelSerializer):
 
     def get_attribute_name(self, obj):
         return [attribute.ko_name for attribute in obj.attributes.all()]
+
+    def get_en_category_name(self, obj):
+        return obj.category.en_name
+
+    def get_en_attribute_name(self, obj):
+        return [attribute.en_name for attribute in obj.attributes.all()]

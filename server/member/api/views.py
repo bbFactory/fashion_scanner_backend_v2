@@ -3,7 +3,7 @@ from rest_framework import status, viewsets
 from rest_framework.permissions import AllowAny
 from server.member.models import Members
 from server.common.models import Color
-from server.cloth.api.serializers import ClothSerialzier
+from server.cloth.api.serializers import ClothSerializer
 from rest_framework.decorators import action
 from server.member.api.serializers import MemberSerialzier
 from rest_framework.response import Response
@@ -26,12 +26,14 @@ class MemberViewset(viewsets.ModelViewSet):
     )
     def get_member(self, request, *args, **kwagrs):
         result = {"data": {}}
-        country_code = request.GET.get("country_code")
-        if country_code == "kr":
-            member_name = request.GET.get("ko_name")
-        else:
-            member_name = request.GET.get("en_name")
-        member_info = Members.objects.get(ko_name=member_name)
+        ko_member_name = request.GET.get("ko_name")
+        en_member_name = request.GET.get("en_name")
+        cloth_serialzier = ClothSerializer
+        member_info = Members.objects.filter(
+            en_name=en_member_name
+        ) | Members.objects.filter(ko_name=ko_member_name)
+
+        member_info = member_info.first()
         # member_info가 받아오는 값
         # member_id, ko_name, en_name, group_type, color_id
         member_serializer = MemberSerialzier(member_info).data
@@ -41,7 +43,7 @@ class MemberViewset(viewsets.ModelViewSet):
 
         # clothes 받아오기
         clothes = Clothes.objects.filter(member_id=member_info.id)
-        cloth_serialzier = ClothSerialzier(clothes, many=True).data
+        cloth_serialzier = cloth_serialzier(clothes, many=True).data
         result["data"]["member"] = member_serializer
         result["data"]["color"] = color
         result["data"]["clothes"] = cloth_serialzier
