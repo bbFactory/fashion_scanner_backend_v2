@@ -218,3 +218,5 @@ cython_debug/
 
 .python-version
 staticfiles/
+
+.envs/.prod/

@@ -16,7 +16,8 @@ services:
     volumes:
       - .:/app
     env_file:
-      - ./.envs/.local/.django
+      # - ./.envs/.local/.django
+      - ./.envs/.prod/.django
       - ./.envs/.local/.postgres
     ports:
       - "8000:8000"
