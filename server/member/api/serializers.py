@@ -6,7 +6,12 @@ from rest_framework import serializers
 from server.member.models import Members
 
 
-class MemberSerialzier(serializers.Serializer):
+class MemberSerialzier(serializers.ModelSerializer):
     class Meta:
         model = Members
-        fields = "__all__"
+        fields = [
+            "id",
+            "ko_name",
+            "en_name",
+            "group_type",
+        ]

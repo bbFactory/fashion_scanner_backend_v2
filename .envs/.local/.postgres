@@ -1,7 +1,7 @@
 # PostgreSQL
 # ------------------------------------------------------------------------------
-POSTGRES_HOST=postgres
-POSTGRES_PORT=5432
+POSTGRES_HOST=ec2-3-36-114-120.ap-northeast-2.compute.amazonaws.com
+POSTGRES_PORT=55432
 POSTGRES_DB=fashion_scanner
 POSTGRES_USER=postgres
 POSTGRES_PASSWORD=postgres
