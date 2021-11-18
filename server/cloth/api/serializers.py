@@ -21,7 +21,7 @@ class ClothSerializer(serializers.ModelSerializer):
         model = Clothes
         fields = [
             "id",
-            # "image_url",
+            "image",
             "color_name",
             # "category_id",
             "ko_category_name",
