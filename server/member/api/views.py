@@ -1,14 +1,15 @@
+from ai.mmfashion.member_matching import match_to_member
 from django.shortcuts import render
 from rest_framework import status, viewsets
-from rest_framework.permissions import AllowAny
-from server.member.models import Members
-from server.common.models import Color
-from server.cloth.api.serializers import KoClothSerializer, EnClothSerializer
-from rest_framework.decorators import action
-from server.member.api.serializers import KoMemberSerialzier, EnMemberSerialzier
 from rest_framework.response import Response
+from rest_framework.decorators import action
+from rest_framework.permissions import AllowAny
+from rest_framework.serializers import ValidationError
+from server.common.models import Color
 from server.cloth.models import Clothes
-from ai.mmfashion.member_matching import match_to_member
+from server.member.models import Members
+from server.cloth.api.serializers import KoClothSerializer, EnClothSerializer
+from server.member.api.serializers import KoMemberSerialzier, EnMemberSerialzier
 
 # Create your views here.
 
@@ -75,14 +76,14 @@ class UserMemberMatchingViewset(viewsets.ModelViewSet):
     def match_to_member(self, request, *args, **kwagrs):
         
         try:
-            result = {} 
-            
+            result = {}     
+        
             user_image = request.FILES.get("user_image")
             
             result["data"] = match_to_member(user_image)
 
             return Response(result, status=status.HTTP_201_CREATED)
-        
+            
         except ValidationError:
             raise ValidationError({"user_image": "업로드한 이미지가 없습니다."})
 
