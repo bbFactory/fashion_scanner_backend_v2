@@ -71,4 +71,4 @@ def match_to_member(img_file):
     member_score_dict = calculate_member_score_by_category(category, category_prob, members)
     member_score_dict = calculate_member_score_by_attributes(attributes, attributes_prob, member_score_dict, members)
     matched_member = sorted(member_score_dict.items(), key=lambda x:x[1], reverse=True)[0][0]
-    return { "member": matched_member, "category": category, "category_prob": category_prob, "attributes": attributes, "attributes_prob": attributes_prob }
+    return { "name": matched_member }

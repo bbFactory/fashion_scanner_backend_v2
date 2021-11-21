@@ -13,7 +13,8 @@ class CatePredictor(object):
             tops_type : default calculate top3, top5 and top10
         """
 
-        cate_cloth_file = open(cfg.cate_cloth_file).readlines()
+        # cate_cloth_file = open(cfg.cate_cloth_file).readlines()
+        cate_cloth_file = open("/app/ai/mmfashion/data/Attr_Predict/Anno_fine/list_category_cloth.txt").readlines()
         self.cate_idx2name = {}
         for i, line in enumerate(cate_cloth_file[2:]):
             self.cate_idx2name[i] = line.strip('\n').split()[0]

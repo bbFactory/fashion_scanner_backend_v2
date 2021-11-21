@@ -5,9 +5,9 @@ import torch
 from mmcv import Config
 from mmcv.runner import load_checkpoint
 
-from mmfashion.core import AttrPredictor, CatePredictor
-from mmfashion.models import build_predictor
-from mmfashion.utils import get_img_tensor
+from ai.mmfashion.mmfashion.core import AttrPredictor, CatePredictor
+from ai.mmfashion.mmfashion.models import build_predictor
+from ai.mmfashion.mmfashion.utils import get_img_tensor
 
 import os
 from pathlib import Path
@@ -17,7 +17,7 @@ BASE_DIR = Path(__file__).resolve().parent
 
 def cate_attr_predictor(pillow_image):
     cfg = Config.fromfile(BASE_DIR / "configs/category_attribute_predict/global_predictor_vgg.py")
-    checkpoint = os.path.join(BASE_DIR, "checkpoint/AttrCatePredict/vgg16_global.pth")
+    checkpoint = os.path.join(BASE_DIR, "vgg16_global.pth")
     img_tensor = get_img_tensor(pillow_image, False)
     landmark_tensor = torch.zeros(8)
     cfg.model.pretrained = None

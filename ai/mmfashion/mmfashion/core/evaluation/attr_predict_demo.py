@@ -13,7 +13,8 @@ class AttrPredictor(object):
             tops_type : default calculate top3, top5 and top10
         """
 
-        attr_cloth_file = open(cfg.attr_cloth_file).readlines()
+        # attr_cloth_file = open(cfg.attr_cloth_file).readlines()
+        attr_cloth_file = open("/app/ai/mmfashion/data/Attr_Predict/Anno_fine/list_attr_cloth.txt").readlines()
         self.attr_idx2name = {}
         for i, line in enumerate(attr_cloth_file[2:]):
             self.attr_idx2name[i] = line.strip('\n').split()[0]
