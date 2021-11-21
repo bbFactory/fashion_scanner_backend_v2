@@ -12,7 +12,7 @@ class ClothesAdmin(admin.ModelAdmin):
     list_display = (
         "id",
         # "product_cover_thumbnail",
-        # "image",
+        "image",
         "member",
         "color",
         "category",
