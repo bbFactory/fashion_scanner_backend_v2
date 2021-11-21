@@ -8,9 +8,9 @@ from rest_framework.decorators import action
 from server.member.api.serializers import KoMemberSerialzier, EnMemberSerialzier
 from rest_framework.response import Response
 from server.cloth.models import Clothes
+from ai.mmfashion.member_matching import match_to_member
 
 # Create your views here.
-
 
 class MemberViewset(viewsets.ModelViewSet):
     permission_classes = [AllowAny]
@@ -57,3 +57,35 @@ class MemberViewset(viewsets.ModelViewSet):
         result["data"]["en"]["clothes"] = en_cloth_serialzier
 
         return Response(result, status=status.HTTP_200_OK)
+
+
+
+class UserMemberMatchingViewset(viewsets.ModelViewSet):
+    permission_classes = [AllowAny]
+    model = Members
+    queryset = Members.objects.all()
+    serialzier_class = [KoMemberSerialzier, EnMemberSerialzier]
+
+    @action(
+        detail=False,
+        methods=["POST"],
+        permission_classes=[AllowAny],
+        url_path="info",
+    )
+    def match_to_member(self, request, *args, **kwagrs):
+        
+        try:
+            result = {} 
+            
+            user_image = request.FILES.get("user_image")
+            
+            result["data"] = match_to_member(user_image)
+
+            return Response(result, status=status.HTTP_201_CREATED)
+        
+        except ValidationError:
+            raise ValidationError({"user_image": "업로드한 이미지가 없습니다."})
+
+        except Exception as e:
+            raise Exception({"message": e})
+
