@@ -96,14 +96,17 @@ def save_lookbook_clothes():
     }
     _member = None
     _name = None
-
+    i = 0
     with open("./server/lookbook_data.csv", "r", encoding="UTF-8") as f:
         reader = csv.reader(f)
         j = 1
         for line in reader:
             if line[0] in member_names:
                 _name = line[0]
-                _member = Members.objects.get(en_name=_name.upper())
+                if _name == 'RM':
+                    _member = Members.objects.get(en_name=_name)
+                else:
+                    _member = Members.objects.get(en_name=_name.title())
 
             if line[0].isdigit():
                 _image = f"lookbook/{_name}/{line[1]}.png"
@@ -111,11 +114,21 @@ def save_lookbook_clothes():
                     _color = Color.objects.create(hex_code=line[5])
                 else:
                     _color = Color.objects.get(hex_code=line[5])
-                print(Category.objects.filter(ko_name=line[4]))
-                _category = Category.objects.get(ko_name=line[4])
-                attribute1 = Attribute.objects.get(ko_name=line[6])
-                attribute2 = Attribute.objects.get(ko_name=line[7])
-                attribute3 = Attribute.objects.get(ko_name=line[8])
+                print(f'{i} : 브랜드 : {line[3]} category :{line[4]}')
+                _category = Category.objects.get(ko_name=line[4].strip())
+                if Attribute.objects.filter(ko_name=line[6]):
+                    attribute1 = Attribute.objects.get(ko_name=line[6])
+                else:
+                    attribute1 = Attribute.objects.create(ko_name=line[6],en_name=line[6])
+                if Attribute.objects.filter(ko_name=line[7]):
+                    attribute2 = Attribute.objects.get(ko_name=line[7])
+                else:
+                    attribute2 = Attribute.objects.create(ko_name=line[7],en_name=line[7])
+                if Attribute.objects.filter(ko_name=line[8]):
+                    attribute3 = Attribute.objects.get(ko_name=line[8])
+                else:
+                    attribute3 = Attribute.objects.create(ko_name=line[8],en_name=line[8])
+                
 
                 lookbook = Clothes.objects.create(
                     image=_image,
@@ -126,7 +139,7 @@ def save_lookbook_clothes():
                 _attributes = [attribute1, attribute2, attribute3]
                 lookbook.attributes.set(_attributes)
                 lookbook.save()
-
+                i+=1
 
 if __name__ == "__main__":
     save_lookbook_clothes()
