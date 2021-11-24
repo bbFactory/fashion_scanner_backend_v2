@@ -15,6 +15,7 @@ from server.cloth.models import Category
 from server.cloth.models import Attribute
 from server.cloth.models import Clothes
 from server.cloth.constants import CLOTHES_CATEGORIES_EN_KO, CLOTHES_ATTRIBUTES_EN_KO
+from server.shoppingmall.models import ShoppingMall
 
 
 # def save_categories():
@@ -129,17 +130,25 @@ def save_lookbook_clothes():
                 else:
                     attribute3 = Attribute.objects.create(ko_name=line[8],en_name=line[8])
                 
+                _brand = Brand.objects.create(name=line[3])
 
                 lookbook = Clothes.objects.create(
                     image=_image,
                     member=_member,
                     color=_color,
-                    category=_category,
+                    category=_category,```
                 )
+
+                _shoppingmall = ShoppingMall.objects.create(brand=_brand, price=line[9])
+
                 _attributes = [attribute1, attribute2, attribute3]
                 lookbook.attributes.set(_attributes)
+                _shoppingmall.cloth.set([lookbook])
                 lookbook.save()
                 i+=1
+
+
+
 
 if __name__ == "__main__":
     save_lookbook_clothes()

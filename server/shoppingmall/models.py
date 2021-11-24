@@ -21,7 +21,7 @@ class ShoppingMall(BaseModel):
         verbose_name="의류",
     )
     url = models.TextField(verbose_name="웹 페이지 URL")
-    price = models.IntegerField("가격", default=0)
+    price = models.CharField("가격",max_length=64, default=0)
 
     def __str__(self):
         return f"쇼핑몰({self.id})"

@@ -26,7 +26,7 @@ id,img 1 name,img 2 name,brand,type,Color,Feature 1,Feature 2,Feature 3,Price
 2,jimin_2,jimin_2_1,입생로랑,상의,242424,자켓,긴팔,섬유,USD 2690
 3,jimin_3,jimin_3_1,bottegaveneta,상의,EFEC43,크루넥,긴팔,섬유,USD 890
 4,jimin_4,jimin_4_1,bottegaveneta,상의,28201E,긴팔,자켓,섬유,USD 4375
-5,jimin_5,jimin_5_1,Maison Margicla,상의,A08B5E,코트,긴팔,기장이 긴,USD4500
+5,jimin_5,jimin_5_1,Maison Margicla,상의,A08B5E,코트,긴팔,기장이 긴,USD 4500
 6,jimin_6,jimin_6_1,saint laurent,상의,E1D9CF,긴팔,크루넥,섬유,USD 740
 7,jimin_7,jimin_7_1,acne studios,상의,371F17,긴팔,크루넥,스트라이프,USD 390
 8,jimin_8,jimin_8_1,amiri,상의,D3A37B,긴팔,섬유,기장 짧은,USD 2700
@@ -68,10 +68,10 @@ JUNGKOOK,,,,,,,,,
 id,img 1 name,img 2 name,brand,type,Color,Feature 1,Feature 2,Feature 3,Price
 1,jungkook_1,jungkook_1_1,루이비똥,하의,151517,패턴,기장이 긴,타이트한,USD 1100
 2,jungkook_2,jungkook_2_1,루이비똥,상의,392C25,긴팔,크루넥,섬유,USD 980
-3,jungkook_3,jungkook_3_1,sandro,상의,F6EFED,카라넥,긴팔,버튼다운,USD210
-4,jungkook_4,jungkook_4_1,샤넬,상의,19181D,반팔,기장이 짧은,자켓,USD4500
-5,jungkook_5,jungkook_5_1,Menspanda,상의,7671D1, 셔츠,패턴,기장이 긴,KRW59000
-6,jungkook_6,jungkook_6_1,Lemaire,점프수트,101010,긴팔,기장이 긴,버튼다운,USD1475
-7,jungkook_7,jungkook_7_1,golden goose,상의,F4F6F5, 자켓,섬유,긴팔,USD615
-8,jungkook_8,jungkook_8_1,iamodechief,상의,2F2B4A, 긴팔,섬유,크루넥,KRW89000
+3,jungkook_3,jungkook_3_1,sandro,상의,F6EFED,카라넥,긴팔,버튼다운,USD 210
+4,jungkook_4,jungkook_4_1,샤넬,상의,19181D,반팔,기장이 짧은,자켓,USD 4500
+5,jungkook_5,jungkook_5_1,Menspanda,상의,7671D1, 셔츠,패턴,기장이 긴,KRW 59000
+6,jungkook_6,jungkook_6_1,Lemaire,점프수트,101010,긴팔,기장이 긴,버튼다운,USD 1475
+7,jungkook_7,jungkook_7_1,golden goose,상의,F4F6F5, 자켓,섬유,긴팔,USD 615
+8,jungkook_8,jungkook_8_1,iamodechief,상의,2F2B4A, 긴팔,섬유,크루넥,KRW 89000
 ,,,,,, ,,,
