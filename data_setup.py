@@ -17,43 +17,83 @@ from server.cloth.models import Clothes
 from server.cloth.constants import CLOTHES_CATEGORIES_EN_KO, CLOTHES_ATTRIBUTES_EN_KO
 
 
-def save_categories():
-    """카테고리 db에 저장"""
-    for _en_name, _ko_name in CLOTHES_CATEGORIES_EN_KO.items():
-        if 1 > Category.objects.filter(en_name=_en_name).count():
-            Category.objects.create(en_name=_en_name, ko_name=_ko_name)
+# def save_categories():
+#     """카테고리 db에 저장"""
+#     for _en_name, _ko_name in CLOTHES_CATEGORIES_EN_KO.items():
+#         if 1 > Category.objects.filter(en_name=_en_name).count():
+#             Category.objects.create(en_name=_en_name, ko_name=_ko_name)
 
-def save_attributes():
-    """속성 db에 저장"""
-    for _en_name, _ko_name in CLOTHES_ATTRIBUTES_EN_KO.items():
-        if 1 > Attribute.objects.filter(en_name=_en_name).count():
-            Attribute.objects.create(en_name=_en_name, ko_name=_ko_name)
 
-def save_brands():
-    return Brand.objects.create(name="chanel")
+# def save_attributes():
+#     """속성 db에 저장"""
+#     for _en_name, _ko_name in CLOTHES_ATTRIBUTES_EN_KO.items():
+#         if 1 > Attribute.objects.filter(en_name=_en_name).count():
+#             Attribute.objects.create(en_name=_en_name, ko_name=_ko_name)
 
-def save_members():
-    """멤버 db에 저장"""
-    ko_member_names = ["제니", "로제", "지수", "리사", "정국", "슈가", "제이홉", "RM", "지민", "뷔", "진"]
-    en_member_names = ["JENNIE", "ROSE", "JISOO", "LISA", "Jungkook", "Suga", "J-Hope", "RM", "Jimin", "V", "Jin"]
-    colors = ["101010", "F4C2C2", "8057AE", "FFFF66", "FFFFF1", "FFFFF2", "FFFFF3", "FFFFF4", "FFFFF5", "FFFFF6", "FFFFF7"]
-    _brand = save_brands()
 
-    _group_type = "BLACKPINK"
-    for i in range(len(en_member_names)):
-        if Color.objects.filter(hex_code=colors[i]).count() < 1:
-            _color = Color.objects.create(hex_code=colors[i])
-        else:
-            _color = Color.objects.get(hex_code=colors[i])
+# def save_brands():
+#     return Brand.objects.create(name="chanel")
 
-        if i > 3:
-            _group_type = "BTS"
-        member = Members.objects.create(ko_name=ko_member_names[i], en_name=en_member_names[i], group_type=_group_type, color=_color)
+
+# def save_members():
+#     """멤버 db에 저장"""
+#     ko_member_names = ["제니", "로제", "지수", "리사", "정국", "슈가", "제이홉", "RM", "지민", "뷔", "진"]
+#     en_member_names = [
+#         "JENNIE",
+#         "ROSE",
+#         "JISOO",
+#         "LISA",
+#         "Jungkook",
+#         "Suga",
+#         "J-Hope",
+#         "RM",
+#         "Jimin",
+#         "V",
+#         "Jin",
+#     ]
+#     colors = [
+#         "101010",
+#         "F4C2C2",
+#         "8057AE",
+#         "FFFF66",
+#         "FFFFF1",
+#         "FFFFF2",
+#         "FFFFF3",
+#         "FFFFF4",
+#         "FFFFF5",
+#         "FFFFF6",
+#         "FFFFF7",
+#     ]
+#     _brand = save_brands()
+
+#     _group_type = "BLACKPINK"
+#     for i in range(len(en_member_names)):
+#         if Color.objects.filter(hex_code=colors[i]).count() < 1:
+#             _color = Color.objects.create(hex_code=colors[i])
+#         else:
+#             _color = Color.objects.get(hex_code=colors[i])
+
+#         if i > 3:
+#             _group_type = "BTS"
+#         member = Members.objects.create(
+#             ko_name=ko_member_names[i],
+#             en_name=en_member_names[i],
+#             group_type=_group_type,
+#             color=_color,
+#         )
 
 
 def save_lookbook_clothes():
     """룩북 의류 이미지 db에 저장"""
-    member_names = {"jennie": 1, "rose": 2, "jisoo": 3, "lisa": 4}
+    member_names = {
+        "V": 1,
+        "JIN": 2,
+        "JIMIN": 3,
+        "J-HOPE": 4,
+        "SUGA": 5,
+        "RM": 6,
+        "JUNGKOOK": 7,
+    }
     _member = None
     _name = None
 
@@ -66,15 +106,16 @@ def save_lookbook_clothes():
                 _member = Members.objects.get(en_name=_name.upper())
 
             if line[0].isdigit():
-                _image = f"/lookbook/{_name}/{line[1]}.png"
-                if Color.objects.filter(hex_code=line[3]).count() < 1:
-                    _color = Color.objects.create(hex_code=line[3])
+                _image = f"lookbook/{_name}/{line[1]}.png"
+                if Color.objects.filter(hex_code=line[5]).count() < 1:
+                    _color = Color.objects.create(hex_code=line[5])
                 else:
-                    _color = Color.objects.get(hex_code=line[3])
-                _category = Category.objects.get(en_name=line[2])
-                attribute1 = Attribute.objects.get(en_name=line[4])
-                attribute2 = Attribute.objects.get(en_name=line[5])
-                attribute3 = Attribute.objects.get(en_name=line[6])
+                    _color = Color.objects.get(hex_code=line[5])
+                print(Category.objects.filter(ko_name=line[4]))
+                _category = Category.objects.get(ko_name=line[4])
+                attribute1 = Attribute.objects.get(ko_name=line[6])
+                attribute2 = Attribute.objects.get(ko_name=line[7])
+                attribute3 = Attribute.objects.get(ko_name=line[8])
 
                 lookbook = Clothes.objects.create(
                     image=_image,
@@ -88,8 +129,4 @@ def save_lookbook_clothes():
 
 
 if __name__ == "__main__":
-    save_attributes()
-    save_categories()
-    save_members()
     save_lookbook_clothes()
-
